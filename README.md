@@ -25,3 +25,26 @@ print("Sum of squared distances for 20 clusters is", fit.inertia_)
 In the last exercise, you saw how the number of clusters while performing K-means clustering could impact your results allowing you to discuss K-means in a machine learning interview. However, another clustering model you can use is hierarchical agglomerative clustering. In Python, you could derive the optimal number of clusters for this technique both visually and mathematically. You will the `scipy` and `sklearn` modules to do both.
 
 Recall that selecting the optimal number of clusters from a dendrogram depends on both the linkage criteria and distance threshold. Here, you'll create a dendrogram with the `X` matrix from `diabetes`, then extend an imaginary line at length 1.50, counting the number of vertical lines crossed to represent the optimal number of clusters for your hierarchical clustering algorithm going forward.
+
+```python
+# Import hierarchical clustering libraries
+import scipy.cluster.hierarchy as sch
+from sklearn.cluster import AgglomerativeClustering
+
+# Create dendrogram
+dendrogram = sch.dendrogram(sch.linkage(X, method='ward'))
+plt.show()
+
+# Create clusters and fit
+hc = AgglomerativeClustering(affinity = 'euclidean', linkage = 'ward')
+hc.fit(X)
+
+# Print number of clusters
+print(hc.n_clusters_)
+```
+
+
+
+
+
+
